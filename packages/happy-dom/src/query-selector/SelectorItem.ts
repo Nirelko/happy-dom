@@ -175,6 +175,10 @@ export default class SelectorItem {
 					return isFound;
 				case 'checked':
 					return element.tagName === 'INPUT' && (<IHTMLInputElement>element).checked;
+				case 'disabled':
+					const elementsWhoCanBeDisabled = ['INPUT', 'BUTTON', 'SELECT', 'TEXTAREA', 'OPTGROUP', 'OPTION', 'FIELDSET'];
+
+					return elementsWhoCanBeDisabled.includes(element.tagName) && (<IHTMLInputElement>element).disabled;
 				case 'empty':
 					return !element.children.length;
 				case 'root':
